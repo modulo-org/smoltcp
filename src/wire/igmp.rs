@@ -112,7 +112,7 @@ impl<T: AsRef<[u8]>> Packet<T> {
     #[inline]
     pub fn group_addr(&self) -> Ipv4Address {
         let data = self.buffer.as_ref();
-        Ipv4Address::from(data[field::GROUP_ADDRESS].try_into().unwrap())
+        Ipv4Address::from(<[u8; 4]>::try_from(&data[field::GROUP_ADDRESS]).unwrap())
     }
 
     /// Validate the header checksum.
