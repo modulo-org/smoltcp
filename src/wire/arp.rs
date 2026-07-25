@@ -281,11 +281,11 @@ impl Repr {
             (Hardware::Ethernet, Protocol::Ipv4, 6, 4) => Ok(Repr::EthernetIpv4 {
                 operation: packet.operation(),
                 source_hardware_addr: EthernetAddress::from_bytes(packet.source_hardware_addr()),
-                source_protocol_addr: Ipv4Address::from_octets(
+                source_protocol_addr: Ipv4Address::from(
                     packet.source_protocol_addr().try_into().unwrap(),
                 ),
                 target_hardware_addr: EthernetAddress::from_bytes(packet.target_hardware_addr()),
-                target_protocol_addr: Ipv4Address::from_octets(
+                target_protocol_addr: Ipv4Address::from(
                     packet.target_protocol_addr().try_into().unwrap(),
                 ),
             }),

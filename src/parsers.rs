@@ -294,7 +294,7 @@ impl<'a> Parser<'a> {
     #[cfg(feature = "proto-ipv4")]
     fn accept_ipv4(&mut self) -> Result<Ipv4Address> {
         let octets = self.accept_ipv4_octets()?;
-        Ok(Ipv4Address::from_octets(octets))
+        Ok(Ipv4Address::from(octets))
     }
 
     fn accept_ip(&mut self) -> Result<IpAddress> {

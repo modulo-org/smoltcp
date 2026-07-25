@@ -339,14 +339,14 @@ impl<T: AsRef<[u8]>> Packet<T> {
     #[inline]
     pub fn src_addr(&self) -> Address {
         let data = self.buffer.as_ref();
-        Address::from_octets(data[field::SRC_ADDR].try_into().unwrap())
+        Address::from(data[field::SRC_ADDR].try_into().unwrap())
     }
 
     /// Return the destination address field.
     #[inline]
     pub fn dst_addr(&self) -> Address {
         let data = self.buffer.as_ref();
-        Address::from_octets(data[field::DST_ADDR].try_into().unwrap())
+        Address::from(data[field::DST_ADDR].try_into().unwrap())
     }
 
     /// Validate the header checksum.
