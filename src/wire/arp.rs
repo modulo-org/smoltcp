@@ -282,11 +282,11 @@ impl Repr {
                 operation: packet.operation(),
                 source_hardware_addr: EthernetAddress::from_bytes(packet.source_hardware_addr()),
                 source_protocol_addr: Ipv4Address::from(
-                    packet.source_protocol_addr().try_into().unwrap(),
+                    <[u8; 4]>::try_from(packet.source_protocol_addr()).unwrap(),
                 ),
                 target_hardware_addr: EthernetAddress::from_bytes(packet.target_hardware_addr()),
                 target_protocol_addr: Ipv4Address::from(
-                    packet.target_protocol_addr().try_into().unwrap(),
+                    <[u8; 4]>::try_from(packet.target_protocol_addr()).unwrap(),
                 ),
             }),
             _ => Err(Error),
